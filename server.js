@@ -15,6 +15,14 @@ await connectDB()
 app.use('/api/user', userRouter)
 app.use('/api/image', imageRouter)
 
+app.use(
+  cors({
+    origin: ["https://image-generator-frontend-alpha.vercel.app"], 
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, 
+  })
+);
+
 app.get('/', (req, res) => {
     res.send('API Working')
 })
